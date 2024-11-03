@@ -79,8 +79,8 @@ Before you begin, ensure you have the following installed:
    ```
 ### Access the API at http://127.0.0.1:8000/
 
-###API Endpoints
-##Authentication
+### API Endpoints
+## Authentication
 Obtain Token
 POST /api/token/
 
@@ -102,3 +102,115 @@ This endpoint allows users to authenticate and receive a JWT token.
     "refresh": "your_jwt_refresh_token"
   }
   ```
+## Refresh Token
+POST /api/token/refresh/
+
+**Request Body**:
+
+  ```bash
+  {
+    "refresh": "your_jwt_refresh_token"
+  }
+  ```
+
+### Employee Management
+## 1. Create an Employee
+POST /api/employees/
+
+This endpoint allows you to create a new employee record.
+**Request Body**:
+
+  ```bash
+  {
+  "name": "Alice Johnson",
+  "email": "alice@example.com",
+  "department": "Sales",
+  "role": "Developer"
+  }
+  ```
+
+**Response**:
+
+  ```bash
+  {
+  "id": 1,
+  "name": "Alice Johnson",
+  "email": "alice@example.com",
+  "department": "Sales",
+  "role": "Developer",
+  "date_joined": "2024-11-01"
+  }
+  ```
+
+## 2. List All Employees
+GET /api/employees/
+
+Retrieve a list of all employees with pagination.
+
+**Response Example**:
+
+  ```bash
+  [
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "email": "alice@example.com",
+    "department": "Sales",
+    "role": "Developer",
+    "date_joined": "2024-11-01"
+  },
+  {
+    "id": 2,
+    "name": "Bob Smith",
+    "email": "bob@example.com",
+    "department": "Engineering",
+    "role": "Manager",
+    "date_joined": "2024-11-02"
+  }
+  ]
+  ```
+
+## 3. Retrieve a Single Employee
+GET /api/employees/{id}/
+
+Fetch a single employee's details by their ID.
+
+**Response Example**:
+
+  ```bash
+  {
+  "id": 1,
+  "name": "Alice Johnson",
+  "email": "alice@example.com",
+  "department": "Sales",
+  "role": "Developer",
+  "date_joined": "2024-11-01"
+  }
+  ```
+
+## 4. Update an Employee
+PUT /api/employees/{id}/
+
+Update an existing employee's information.
+
+**Response Body**:
+
+  ```bash
+  {
+  "name": "Alice Johnson",
+  "email": "alice.new@example.com",
+  "department": "Sales",
+  "role": "Senior Developer"
+  }
+  ```
+
+## 5. Delete an Employee
+DELETE /api/employees/{id}/
+
+Remove an employee record from the database.
+
+**Response**:
+
+HTTP Status 204 No Content on successful deletion.
+
+
