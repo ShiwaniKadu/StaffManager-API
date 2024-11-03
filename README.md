@@ -16,7 +16,6 @@ Welcome to the **StaffManager-API**, a RESTful service designed for managing emp
 - [Filtering and Pagination](#filtering-and-pagination)
 - [Testing](#testing)
 - [Documentation](#documentation)
-- [Future Improvements](#future-improvements)
 
 ## Project Overview
 
@@ -213,4 +212,35 @@ Remove an employee record from the database.
 
 HTTP Status 204 No Content on successful deletion.
 
+## Filtering and Pagination
+# Filter Employees: Use query parameters to filter employees by department or role.
+
+GET /api/employees/?department=Sales&role=Developer
+
+# Pagination: Limit results per page to 10 employees with pagination support.
+
+GET /api/employees/?page=2
+
+## Testing
+To run the tests for the API, execute the following command:
+
+``` bash
+python manage.py test
+
+```
+This will run all the unit tests defined for the API endpoints, ensuring that functionality and edge cases are covered.
+
+### Documentation
+## Running Locally
+1. Clone the repository and follow the installation steps above.
+2. Start the server to access the API endpoints.
+3. Use tools like Postman to test the API:
+* Authenticate to obtain a token.
+* Add the token to the Authorization header as Bearer <token> for secured requests.
+  
+### API Documentation (Optional)
+For interactive API documentation, consider using drf-yasg. After installing and configuring it, access the documentation at:
+
+* Swagger UI: http://127.0.0.1:8000/swagger/
+* ReDoc: http://127.0.0.1:8000/redoc/
 
