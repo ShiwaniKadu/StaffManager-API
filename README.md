@@ -16,7 +16,6 @@ Welcome to the **StaffManager-API**, a RESTful service designed for managing emp
 - [Filtering and Pagination](#filtering-and-pagination)
 - [Testing](#testing)
 - [Documentation](#documentation)
-- [Future Improvements](#future-improvements)
 
 ## Project Overview
 
@@ -77,6 +76,171 @@ Before you begin, ensure you have the following installed:
    ```bash
    python manage.py runserver
    ```
-### Access the API at http://127.0.0.1:8000/.
+### Access the API at http://127.0.0.1:8000/
 
+### API Endpoints
+## Authentication
+Obtain Token
+POST /api/token/
+
+This endpoint allows users to authenticate and receive a JWT token.
+**Request Body**:
+
+   ```bash
+   {
+     "username": "your_username",
+     "password": "your_password"
+   }
+
+   ```
+**Response**:
+
+  ```bash
+  {
+    "access": "your_jwt_access_token",
+    "refresh": "your_jwt_refresh_token"
+  }
+  ```
+## Refresh Token
+POST /api/token/refresh/
+
+**Request Body**:
+
+  ```bash
+  {
+    "refresh": "your_jwt_refresh_token"
+  }
+  ```
+
+### Employee Management
+## 1. Create an Employee
+POST /api/employees/
+
+This endpoint allows you to create a new employee record.
+**Request Body**:
+
+  ```bash
+  {
+  "name": "Alice Johnson",
+  "email": "alice@example.com",
+  "department": "Sales",
+  "role": "Developer"
+  }
+  ```
+
+**Response**:
+
+  ```bash
+  {
+  "id": 1,
+  "name": "Alice Johnson",
+  "email": "alice@example.com",
+  "department": "Sales",
+  "role": "Developer",
+  "date_joined": "2024-11-01"
+  }
+  ```
+
+## 2. List All Employees
+GET /api/employees/
+
+Retrieve a list of all employees with pagination.
+
+**Response Example**:
+
+  ```bash
+  [
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "email": "alice@example.com",
+    "department": "Sales",
+    "role": "Developer",
+    "date_joined": "2024-11-01"
+  },
+  {
+    "id": 2,
+    "name": "Bob Smith",
+    "email": "bob@example.com",
+    "department": "Engineering",
+    "role": "Manager",
+    "date_joined": "2024-11-02"
+  }
+  ]
+  ```
+
+## 3. Retrieve a Single Employee
+GET /api/employees/{id}/
+
+Fetch a single employee's details by their ID.
+
+**Response Example**:
+
+  ```bash
+  {
+  "id": 1,
+  "name": "Alice Johnson",
+  "email": "alice@example.com",
+  "department": "Sales",
+  "role": "Developer",
+  "date_joined": "2024-11-01"
+  }
+  ```
+
+## 4. Update an Employee
+PUT /api/employees/{id}/
+
+Update an existing employee's information.
+
+**Response Body**:
+
+  ```bash
+  {
+  "name": "Alice Johnson",
+  "email": "alice.new@example.com",
+  "department": "Sales",
+  "role": "Senior Developer"
+  }
+  ```
+
+## 5. Delete an Employee
+DELETE /api/employees/{id}/
+
+Remove an employee record from the database.
+
+**Response**:
+
+HTTP Status 204 No Content on successful deletion.
+
+## Filtering and Pagination
+# Filter Employees: Use query parameters to filter employees by department or role.
+
+GET /api/employees/?department=Sales&role=Developer
+
+# Pagination: Limit results per page to 10 employees with pagination support.
+
+GET /api/employees/?page=2
+
+## Testing
+To run the tests for the API, execute the following command:
+
+``` bash
+python manage.py test
+
+```
+This will run all the unit tests defined for the API endpoints, ensuring that functionality and edge cases are covered.
+
+### Documentation
+## Running Locally
+1. Clone the repository and follow the installation steps above.
+2. Start the server to access the API endpoints.
+3. Use tools like Postman to test the API:
+* Authenticate to obtain a token.
+* Add the token to the Authorization header as Bearer <token> for secured requests.
+  
+### API Documentation (Optional)
+For interactive API documentation, consider using drf-yasg. After installing and configuring it, access the documentation at:
+
+* Swagger UI: http://127.0.0.1:8000/swagger/
+* ReDoc: http://127.0.0.1:8000/redoc/
 
