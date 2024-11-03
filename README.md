@@ -77,6 +77,28 @@ Before you begin, ensure you have the following installed:
    ```bash
    python manage.py runserver
    ```
-### Access the API at http://127.0.0.1:8000/.
+### Access the API at http://127.0.0.1:8000/
 
+###API Endpoints
+##Authentication
+Obtain Token
+POST /api/token/
 
+This endpoint allows users to authenticate and receive a JWT token.
+**Request Body**:
+
+   ```bash
+   {
+     "username": "your_username",
+     "password": "your_password"
+   }
+
+   ```
+**Response**:
+
+  ```bash
+  {
+    "access": "your_jwt_access_token",
+    "refresh": "your_jwt_refresh_token"
+  }
+  ```
