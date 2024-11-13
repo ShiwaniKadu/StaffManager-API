@@ -1,4 +1,4 @@
-HabotConnect-StaffManager-API
+StaffManager-API
 Welcome to the **StaffManager-API**, a RESTful service designed for managing employee data within organizations. This API provides a structured way to perform CRUD operations on employee records while implementing best practices for security and error handling.
 
 ## Table of Contents
